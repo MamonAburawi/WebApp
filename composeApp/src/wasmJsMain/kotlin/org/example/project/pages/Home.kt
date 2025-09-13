@@ -42,7 +42,7 @@ fun Home(
 
             }
         ){
-            Text(text = "Cart")
+            Text(text = "New Feature")
         }
 
 
