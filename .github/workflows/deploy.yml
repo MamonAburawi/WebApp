@@ -24,6 +24,9 @@ jobs:
           java-version: '17' # Use a version compatible with your project
           distribution: 'temurin'
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
       - name: Build with Gradle
         # This command builds the app and places the output in build/dist/wasmJs/productionExecutable
         run: ./gradlew wasmJsBrowserDistribution
