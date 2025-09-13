@@ -1,4 +1,4 @@
-        name: Build & Deploy KMP Web App
+        name: Build & Deploy KMP
 
         on:
           push:
