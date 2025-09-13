@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ] # Or "master", depending on your default branch
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17' # Use a version compatible with your project
+          distribution: 'temurin'
+
+      - name: Build with Gradle
+        # This command builds the app and places the output in build/dist/wasmJs/productionExecutable
+        run: ./gradlew wasmJsBrowserDistribution
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # This is the standard output directory for Kotlin/Wasm browser distribution
+          path: build/dist/wasmJs/productionExecutable
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
