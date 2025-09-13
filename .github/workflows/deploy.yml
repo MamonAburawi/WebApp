@@ -1,5 +1,5 @@
-        name: Build & Deploy KMP
-
+        name:  Mobile
+# Build & Deploy KMP
         on:
           push:
             branches: [ main ]
