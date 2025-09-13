@@ -34,6 +34,18 @@ fun Home(
         ) {
             Text(text = "Product")
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(
+            onClick = {
+
+            }
+        ){
+            Text(text = "Cart")
+        }
+
+
     }
 }
 
